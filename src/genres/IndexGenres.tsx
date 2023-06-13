@@ -25,7 +25,6 @@ const IndexGenres = () => {
       })
       .then((res: AxiosResponse<genreDTO[]>) => {
         const totalAmountOfPages = parseInt(res.headers["totalamoutofrecords"]);
-        console.log(res.headers);
         setTotalAmountOfPages(Math.ceil(totalAmountOfPages / recordsPerPage));
         setGenres(res.data);
       });
