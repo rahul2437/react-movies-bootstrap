@@ -7,6 +7,7 @@ import GenericList from "../utils/GenericList";
 import Button from "../utils/Button";
 import Pagination from "../utils/Pagination";
 import RecordsPerPageSelect from "../utils/RecordsPerPageSelect";
+import customConfirm from "../utils/customConfirm";
 
 const IndexGenres = () => {
   const [genres, setGenres] = useState<genreDTO[]>();
@@ -15,7 +16,7 @@ const IndexGenres = () => {
   const [recordsPerPage, setRecordsPerPage] = useState(5);
   const [page, setPage] = useState(1);
 
-  useEffect(() => {
+  const loadData = () => {
     axios
       .get(urlGenres, {
         params: {
@@ -28,6 +29,20 @@ const IndexGenres = () => {
         setTotalAmountOfPages(Math.ceil(totalAmountOfPages / recordsPerPage));
         setGenres(res.data);
       });
+  };
+
+  const deleteGenre = async (id: number) => {
+    try {
+      await axios.delete(`${urlGenres}/${id}`);
+      loadData();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    loadData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page, recordsPerPage]);
 
   return (
@@ -67,7 +82,12 @@ const IndexGenres = () => {
                   >
                     Edit
                   </Link>
-                  <Button className="btn btn-danger">Delete</Button>
+                  <Button
+                    className="btn btn-danger"
+                    onClick={() => customConfirm(() => deleteGenre(genre.id))}
+                  >
+                    Delete
+                  </Button>
                 </td>
               </tr>
             ))}
