@@ -20,7 +20,11 @@ export default function Map(props: mapProps) {
   );
   return (
     <MapContainer
-      center={[18.482214, -69.914311]}
+      center={
+        coordinates[0]
+          ? [coordinates[0].lat, coordinates[0].lng]
+          : [15.886862, 74.525385]
+      }
       zoom={14}
       style={{ height: props.height }}
     >
