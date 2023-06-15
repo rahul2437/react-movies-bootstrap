@@ -16,6 +16,7 @@ import FilterMovies from "./movies/FilterMovies";
 
 import LandingPage from "./movies/LandingPage";
 import RedirectToLandingPage from "./utils/RedirectToLandingPage";
+import MovieDetails from "./movies/MovieDetails";
 
 const routes = [
   { path: "/genres", component: IndexGenres, exact: true },
@@ -33,6 +34,7 @@ const routes = [
   { path: "/movies/create", component: CreateMovie },
   { path: "/movies/edit/:id(\\d+)", component: EditMovie },
   { path: "/movies/filter", component: FilterMovies },
+  { path: "/movies/:id(\\d+)", component: MovieDetails },
 
   { path: "/", component: LandingPage, exact: true },
   { path: "*", component: RedirectToLandingPage },
