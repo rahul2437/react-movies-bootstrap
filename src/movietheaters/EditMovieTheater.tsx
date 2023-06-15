@@ -1,4 +1,4 @@
-import { urlGenres, urlMovieTheaters } from "../endpoints";
+import { urlMovieTheaters } from "../endpoints";
 import EditEntity from "../utils/EditEntity";
 import MovieTheaterForm from "./MovieTheaterForm";
 import { movieTheaterCreationDTO, movieTheaterDTO } from "./movieTheater.model";

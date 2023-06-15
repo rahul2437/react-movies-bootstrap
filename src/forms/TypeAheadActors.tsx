@@ -1,31 +1,23 @@
 import { ReactElement, useState } from "react";
-import { Typeahead } from "react-bootstrap-typeahead";
+import { AsyncTypeahead } from "react-bootstrap-typeahead";
 import { actorMovieDTO } from "../actors/actors.model";
+import axios, { AxiosResponse } from "axios";
+import { urlMovies } from "../endpoints";
 
 export default function TypeAheadActors(props: typeAheadActorsProps) {
-  const actors: actorMovieDTO[] = [
-    {
-      id: 1,
-      name: "Felipe",
-      character: "",
-      picture:
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Tom_Holland_by_Gage_Skidmore.jpg/220px-Tom_Holland_by_Gage_Skidmore.jpg",
-    },
-    {
-      id: 2,
-      name: "Fernando",
-      character: "",
-      picture:
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Dwayne_Johnson_2%2C_2013.jpg/220px-Dwayne_Johnson_2%2C_2013.jpg",
-    },
-    {
-      id: 3,
-      name: "Jessica",
-      character: "",
-      picture:
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Meryl_Streep_December_2018.jpg/220px-Meryl_Streep_December_2018.jpg",
-    },
-  ];
+  const [actors, setActors] = useState<actorMovieDTO[]>([]);
+
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleSearch = (query: string) => {
+    setIsLoading(true);
+    axios
+      .get(`${urlMovies}/searchByName/${query}`)
+      .then((res: AxiosResponse<actorMovieDTO[]>) => {
+        setActors(res.data);
+        setIsLoading(false);
+      });
+  };
 
   const selected: actorMovieDTO[] = [];
 
@@ -58,19 +50,20 @@ export default function TypeAheadActors(props: typeAheadActorsProps) {
   return (
     <div className="mb-3">
       <label>{props.displayName}</label>
-      <Typeahead
+      <AsyncTypeahead
         id="typeahead"
         onChange={(actors) => {
           if (props.actors.findIndex((x) => x.id === actors[0].id) === -1) {
+            actors[0].character = "";
             props.onAdd([...props.actors, actors[0]]);
           }
-
-          console.log(actors);
         }}
         options={actors}
         labelKey={(actor) => actor.name}
-        filterBy={["name"]}
-        placeholder="Write the name of the actor..."
+        filterBy={() => true}
+        isLoading={isLoading}
+        onSearch={handleSearch}
+        placeholder="Enter the name of the actor"
         minLength={1}
         flip={true}
         selected={selected}

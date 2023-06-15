@@ -1,10 +1,10 @@
 import axios from "axios";
-import MovieTheaterForm from "./MovieTheaterForm";
-import { movieTheaterCreationDTO, movieTheaterDTO } from "./movieTheater.model";
-import { urlMovieTheaters } from "../endpoints";
-import { useHistory } from "react-router-dom";
 import { useState } from "react";
+import { useHistory } from "react-router-dom";
+import { urlMovieTheaters } from "../endpoints";
 import DisplayErrors from "../utils/DisplayErrors";
+import MovieTheaterForm from "./MovieTheaterForm";
+import { movieTheaterCreationDTO } from "./movieTheater.model";
 
 export default function CreateMovieTheater() {
   const history = useHistory();
