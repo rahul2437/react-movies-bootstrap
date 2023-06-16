@@ -3,8 +3,8 @@ export default function DisplayErrors(props: displayErrorProps) {
     <>
       {props.errors ? (
         <ul style={{ color: "red" }}>
-          {props.errors.map((err, idx) => (
-            <li key={idx}>{err}</li>
+          {props.errors?.map((err, idx) => (
+            <li key={idx}>{err ? err : ""}</li>
           ))}
         </ul>
       ) : null}

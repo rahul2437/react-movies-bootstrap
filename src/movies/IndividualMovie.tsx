@@ -31,7 +31,7 @@ export default function IndividualMovie(props: movieDTO) {
         <Link
           style={{ marginRight: "1rem" }}
           className="btn btn-info"
-          to={`movies/edit/${props.id}`}
+          to={`/movies/edit/${props.id}`}
         >
           Edit
         </Link>
