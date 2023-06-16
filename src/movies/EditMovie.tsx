@@ -34,7 +34,7 @@ export default function EditMovie() {
         setMovie(model);
         setMoviePutGet(res.data);
       });
-  }, []);
+  }, [id]);
 
   const edit = async (movieToEdit: movieCreationDTO) => {
     try {
@@ -60,7 +60,9 @@ export default function EditMovie() {
       {movie && moviePutGet ? (
         <MovieForm
           model={movie}
-          onSubmit={async (values) => await edit(values)}
+          onSubmit={async (values, action) => {
+            await edit(values);
+          }}
           nonSelectedGenres={moviePutGet.nonSelectedGenres}
           selectedGenres={moviePutGet.selectedGenres}
           nonSelectedMovieTheaters={moviePutGet.nonSelectedMovieTheaters}

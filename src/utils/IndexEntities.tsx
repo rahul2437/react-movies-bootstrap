@@ -23,7 +23,9 @@ export default function IndexEntities<T>(props: indexEntitiesProps<T>) {
         },
       })
       .then((res: AxiosResponse<T[]>) => {
-        const totalAmountOfPages = parseInt(res.headers["totalamoutofrecords"]);
+        const totalAmountOfPages = parseInt(
+          res.headers["totalamountofrecords"]
+        );
         setTotalAmountOfPages(Math.ceil(totalAmountOfPages / recordsPerPage));
         setEntities(res.data);
       });
