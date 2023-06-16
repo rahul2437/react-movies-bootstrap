@@ -23,7 +23,9 @@ const IndexGenres = () => {
               {genres?.map((genre) => (
                 <tr key={genre.id} style={{ verticalAlign: "middle" }}>
                   <td>{genre.name}</td>
-                  <td>{buttons(`genres/edit/${genre.id}`, genre.id)}</td>
+                  <td align="right">
+                    {buttons(`genres/edit/${genre.id}`, genre.id)}
+                  </td>
                 </tr>
               ))}
             </tbody>

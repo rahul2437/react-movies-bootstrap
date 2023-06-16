@@ -30,7 +30,7 @@ export default function MultipleSelector(props: multipleSelectorProps) {
       <label>{props.displayName}</label>
       <div className="multiple-selector">
         <ul>
-          {props.nonSelected.map((item) => (
+          {props.nonSelected.map((item, idx) => (
             <li key={item.key} onClick={() => select(item)}>
               {item.value}
             </li>
@@ -49,7 +49,7 @@ export default function MultipleSelector(props: multipleSelectorProps) {
           </button>
         </div>
         <ul>
-          {props.selected.map((item) => (
+          {props.selected.map((item, idx) => (
             <li key={item.key} onClick={() => deselect(item)}>
               {item.value}
             </li>

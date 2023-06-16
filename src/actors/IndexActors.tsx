@@ -35,7 +35,9 @@ export default function IndexActors() {
                     />
                   </td>
                   <td>{actor.name}</td>
-                  <td>{buttons(`actors/edit/${actor.id}`, actor.id)}</td>
+                  <td align="right">
+                    {buttons(`actors/edit/${actor.id}`, actor.id)}
+                  </td>
                 </tr>
               ))}
             </tbody>

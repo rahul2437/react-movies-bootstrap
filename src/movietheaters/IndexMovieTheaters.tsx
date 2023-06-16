@@ -23,7 +23,7 @@ export default function IndexMovieTheaters() {
               {movieTheaters?.map((movieTheater) => (
                 <tr key={movieTheater.id} style={{ verticalAlign: "middle" }}>
                   <td>{movieTheater.name}</td>
-                  <td>
+                  <td align="right">
                     {buttons(
                       `movietheaters/edit/${movieTheater.id}`,
                       movieTheater.id
