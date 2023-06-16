@@ -1,5 +1,5 @@
 import "./MultipleSelector.css";
-
+import { BsSkipForwardFill, BsSkipBackwardFill } from "react-icons/bs";
 export default function MultipleSelector(props: multipleSelectorProps) {
   function select(item: multipleSelectorModel) {
     const selected = [...props.selected, item];
@@ -26,7 +26,7 @@ export default function MultipleSelector(props: multipleSelectorProps) {
   }
 
   return (
-    <div className="mb-3">
+    <div className="mb-3" id="multiSelector">
       <label>{props.displayName}</label>
       <div className="multiple-selector">
         <ul>
@@ -37,11 +37,15 @@ export default function MultipleSelector(props: multipleSelectorProps) {
           ))}
         </ul>
         <div className="multiple-selector-buttons">
-          <button type="button" onClick={selectAll}>
-            {">>"}
+          <button className="btn btn-success" type="button" onClick={selectAll}>
+            <BsSkipForwardFill />
           </button>
-          <button type="button" onClick={deselectAll}>
-            {"<<"}
+          <button
+            className="btn btn-danger "
+            type="button"
+            onClick={deselectAll}
+          >
+            <BsSkipBackwardFill />
           </button>
         </div>
         <ul>

@@ -21,7 +21,7 @@ export default function IndexMovieTheaters() {
             </thead>
             <tbody>
               {movieTheaters?.map((movieTheater) => (
-                <tr key={movieTheater.id}>
+                <tr key={movieTheater.id} style={{ verticalAlign: "middle" }}>
                   <td>{movieTheater.name}</td>
                   <td>
                     {buttons(

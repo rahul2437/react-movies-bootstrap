@@ -79,7 +79,6 @@ export default function FilterMovies() {
 
   return (
     <>
-      <h3>Filter Movies</h3>
       <Formik
         initialValues={initialValues}
         onSubmit={(values) => {
@@ -90,6 +89,7 @@ export default function FilterMovies() {
         {(formikProps) => (
           <>
             <Form>
+              <h3>Filter Movies</h3>
               <div className="row gx-3 align-items-center mb-3">
                 <div className="col-auto">
                   <input

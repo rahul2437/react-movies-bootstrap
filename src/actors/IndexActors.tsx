@@ -15,13 +15,25 @@ export default function IndexActors() {
           <>
             <thead>
               <tr>
+                <th></th>
                 <th>Name</th>
                 <th></th>
               </tr>
             </thead>
             <tbody>
               {actors?.map((actor) => (
-                <tr key={actor.id}>
+                <tr key={actor.id} style={{ verticalAlign: "middle" }}>
+                  <td>
+                    <img
+                      style={{
+                        width: "48px",
+                        height: "64px",
+                        objectFit: "cover",
+                      }}
+                      src={actor.picture}
+                      alt=""
+                    />
+                  </td>
                   <td>{actor.name}</td>
                   <td>{buttons(`actors/edit/${actor.id}`, actor.id)}</td>
                 </tr>

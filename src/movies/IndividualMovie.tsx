@@ -20,17 +20,27 @@ export default function IndividualMovie(props: movieDTO) {
   };
 
   return (
-    <div className={css.div}>
+    <div
+      style={{
+        width: "280px",
+        backgroundColor: "#e3e3e3",
+        borderRadius: "5px",
+        paddingBottom: "10px",
+      }}
+      className={css.div}
+    >
       <Link to={buildLink()}>
         <img alt="Poster" src={props.poster} />
       </Link>
       <p>
-        <Link to={buildLink()}>{props.title}</Link>
+        <Link className="text-dark " to={buildLink()}>
+          {props.title}
+        </Link>
       </p>
       <div>
         <Link
           style={{ marginRight: "1rem" }}
-          className="btn btn-info"
+          className="btn btn-warning"
           to={`/movies/edit/${props.id}`}
         >
           Edit

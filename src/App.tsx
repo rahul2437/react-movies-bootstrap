@@ -10,7 +10,7 @@ function App() {
   return (
     <BrowserRouter>
       <Menu />
-      <div className="container">
+      <div style={{ marginBottom: "50px" }} className="container">
         <Switch>
           {routes.map((route) => (
             <Route key={route.path} path={route.path} exact={route.exact}>
@@ -19,9 +19,14 @@ function App() {
           ))}
         </Switch>
       </div>
-      <footer className="bd-footer py-5 mt-5 bg-light">
-        <div className="container">
-          React Movies {new Date().getFullYear().toString()}
+      <footer
+        style={{
+          zIndex: 4,
+        }}
+        className="bd-footer py-5 mt-5 bg-dark"
+      >
+        <div className="container text-center fw-bold text-white">
+          React Movies App &copy; {new Date().getFullYear().toString()}
         </div>
       </footer>
     </BrowserRouter>

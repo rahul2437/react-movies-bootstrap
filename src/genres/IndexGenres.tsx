@@ -21,7 +21,7 @@ const IndexGenres = () => {
             </thead>
             <tbody>
               {genres?.map((genre) => (
-                <tr key={genre.id}>
+                <tr key={genre.id} style={{ verticalAlign: "middle" }}>
                   <td>{genre.name}</td>
                   <td>{buttons(`genres/edit/${genre.id}`, genre.id)}</td>
                 </tr>

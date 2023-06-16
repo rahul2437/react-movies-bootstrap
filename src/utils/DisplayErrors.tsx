@@ -1,7 +1,8 @@
 export default function DisplayErrors(props: displayErrorProps) {
+  console.log(props.errors);
   return (
     <>
-      {props.errors ? (
+      {Array.isArray(props.errors) ? (
         <ul style={{ color: "red" }}>
           {props.errors?.map((err, idx) => (
             <li key={idx}>{err ? err : ""}</li>
