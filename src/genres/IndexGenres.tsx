@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { urlGenres } from "../endpoints";
 import IndexEntities from "../utils/IndexEntities";
 import { genreDTO } from "./genres.model";
@@ -22,7 +23,11 @@ const IndexGenres = () => {
             <tbody>
               {genres?.map((genre) => (
                 <tr key={genre.id} style={{ verticalAlign: "middle" }}>
-                  <td>{genre.name}</td>
+                  <td>
+                    <Link to={`/movies/filter?genreId=${genre.id}`}>
+                      {genre.name}
+                    </Link>
+                  </td>
                   <td align="right">
                     {buttons(`genres/edit/${genre.id}`, genre.id)}
                   </td>
